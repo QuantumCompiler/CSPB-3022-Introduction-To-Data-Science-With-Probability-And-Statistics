@@ -89,6 +89,7 @@
                 menucolor = LinkColor,
                 linktocpage = true,
                 bookmarks = true,
+                pdfnewwindow = true,
                 pdfusetitle]{hyperref} % Hyperlinks
 \RequirePackage[top = 2cm,
                 bottom = 2cm,
@@ -108,7 +109,6 @@
 \RequirePackage{changepage} % Change page dimensions
 \RequirePackage{background} % Background image
 \RequirePackage{pdfpages} % Embed a pdf page
-\RequirePackage{hyperref} % Hyperref package
 \RequirePackage{attachfile2} % Add pdf as a link to this pdf
 %---------------------------------------------------------------------------
 %	HEADER AND FOOTER
