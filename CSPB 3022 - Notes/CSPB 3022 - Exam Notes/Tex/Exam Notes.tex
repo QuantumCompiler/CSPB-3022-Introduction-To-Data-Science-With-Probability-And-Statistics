@@ -1,0 +1,180 @@
+\begin{examnotes}{Exam 1 Notes}
+    \subsubsection*{Data Frames}
+
+    A data frame in Pandas is a two-dimensional, size-mutable, and potentially heterogeneous tabular data structure with labeled axes (rows and columns). It's akin to a spreadsheet or SQL table and 
+    is one of the most commonly used Pandas data structures.
+
+    You can create a data frame from various sources, such as:
+
+    \begin{itemize}
+        \item Lists
+        \item Dictionaries
+        \item NumPy arrays
+        \item CSV files
+        \item SQL databases
+    \end{itemize}
+
+    The structure of data frames can be summed up by:
+
+    \begin{itemize}
+        \item \textbf{Rows}: Each row represents a single observation or record.
+        \item \textbf{Columns}: Each column represents a variable or feature. Columns can be of different data types (integer, string, float, etc.).
+        \item \textbf{Index}: This is the `key' for rows, similar to an index in a database. It’s an immutable array, allowing fast access to data.
+    \end{itemize}
+
+    Some operations that can be used with data frames are:
+
+    \begin{itemize}
+        \item \textbf{Data Manipulation}: Adding, deleting, and modifying both rows and columns.
+        \item \textbf{Filtering}: Selecting a subset of rows or columns based on some criteria.
+        \item \textbf{Sorting and Grouping}: Organizing data based on values in certain columns.
+        \item \textbf{Merging and Joining}: Combining multiple data frames.
+        \item \textbf{Handling Missing Data}: Identifying and imputing missing values.
+    \end{itemize}
+
+    \begin{highlight}[Data Frame Operation Examples]
+        Here are some examples of data frame manipulation in pandas:
+
+        \subsubsection*{Creation}
+
+    \begin{code}[Python]
+    import pandas as pd
+
+    # Creating a data frame from a dictionary
+    data = {'Name': ['Alice', 'Bob', 'Charlie'], 
+            'Age': [25, 30, 35],
+            'City': ['New York', 'Los Angeles', 'Chicago']}
+    df = pd.DataFrame(data)            
+    \end{code}
+
+        \subsubsection*{Adding A Column}
+
+    \begin{code}[Python]
+    # Adding a new column
+    df['Salary'] = [70000, 80000, 90000]        
+    \end{code}
+
+        \subsubsection*{Deleting A Column}
+
+    \begin{code}[Python]
+    # Deleting a column
+    df.drop('Age', axis=1, inplace=True)        
+    \end{code}
+
+        \subsubsection*{Filtering Data}
+
+    \begin{code}[Python]
+    # Filtering rows where Salary is greater than 75000
+    high_earners = df[df['Salary'] > 75000]        
+    \end{code}
+
+        \subsubsection*{Sorting Data}
+
+    \begin{code}[Python]
+    # Sorting data by Salary in descending order
+    df_sorted = df.sort_values(by='Salary', ascending=False)        
+    \end{code}
+
+        \subsubsection*{Merging Data Frames}
+
+    \begin{code}[Python]
+    # Creating another data frame
+    additional_data = pd.DataFrame({'Name': ['Alice', 'Bob'], 'Experience': [5, 10]})
+    
+    # Merging data frames
+    merged_df = pd.merge(df, additional_data, on='Name', how='left')        
+    \end{code}
+
+        \subsubsection*{Handling Missing Data}
+
+    \begin{code}[Python]
+    # Filling missing values with zero
+    df_filled = df.fillna(0)        
+    \end{code}
+
+        \subsubsection*{Reading Data}
+
+    \begin{code}[Python]
+    # Reading data from a CSV file
+    df_from_csv = pd.read_csv('data.csv')
+    
+    # Writing data to a CSV file
+    df.to_csv('output.csv', index=False)        
+    \end{code}
+    \end{highlight}
+
+    \subsubsection*{Combinatorics}
+
+    Combinatorics is a branch of mathematics dealing with the study of countable, discrete structures and their properties. It's particularly important in computer science, where understanding how to 
+    count and arrange objects is crucial for algorithm design, data structure optimization, and problem-solving. Here's a summary of the key concepts in combinatorics:
+
+    \begin{itemize}
+        \item \textbf{Counting Principles}
+        \begin{itemize}
+            \item \textbf{The Rule of Sum}: If there are $A$ ways to do something and $B$ ways to do another thing, and these two things cannot happen at the same time, then there are $A + B$ ways 
+            to choose one of these actions.
+            \item \textbf{The Rule of Product}: If there are $A$ ways to do something and $B$ ways to do another thing after that, then there are $A \cdot B$ ways to perform both actions.
+        \end{itemize}
+        \item \textbf{Permutations}
+        \begin{itemize}
+            \item Permutations are the arrangements of objects in a specific order.
+            \item The number of permutations of $n$ distinct objects is $n!$ ($n$ factorial), which is the product of all positive integers up to $n$.
+            \item For arranging $r$ objects out of $n$ available objects, the formula is
+            \begin{equation*}
+                ^{n}P_{r} = \frac{n!}{(n - r)!}.
+            \end{equation*}
+        \end{itemize}
+        \item \textbf{Combinations}
+        \begin{itemize}
+            \item Combinations refer to the selection of objects without regard to the order.
+            \item The number of ways to choose $r$ objects from $n$ different objects is given by 
+            \begin{equation*}
+                \begin{pmatrix}
+                    n \\
+                    r \\
+                \end{pmatrix}
+                = \frac{n!}{r!(n - r)!}.
+            \end{equation*}
+            \item Combinations are used when the order doesn't matter.
+        \end{itemize}
+        \item \textbf{Binomial Theorem}
+        \begin{itemize}
+            \item It provides a formula for the expansion of powers of a binomial (sum of two terms).
+            \item The Binomial Theorem states that:
+            \begin{equation*}
+                (a + b)^{n} = \sum_{k = 0}^{n} 
+                \begin{pmatrix}
+                    n \\
+                    k \\
+                \end{pmatrix}
+                \cdot a^{n - k} \cdot b^{k}
+            \end{equation*}
+            \begin{itemize}
+                \item This means the expansion is a sum of terms, where the exponents of a start at $n$ and decrease to 0, while the exponents of $b$ start at 0 and increase to $n$. The coefficients 
+                of each term are the corresponding binomial coefficients.
+            \end{itemize}
+            \item The coefficients of the terms in the expansion are the binomial coefficients, which can be calculated using combinations.
+        \end{itemize}
+        \item \textbf{Binomial Distribution}
+        \begin{itemize}
+            \item A binomial distribution is a discrete probability distribution that models the number of successes in a fixed number of independent Bernoulli trials. A Bernoulli trial is an experiment 
+            with exactly two possible outcomes, typically termed "success" and "failure".
+            \item In the context of the binomial distribution, $P(x = k)$ denotes the probability of getting exactly $k$ successes in $n$ trials. The formula for this is
+            \begin{equation*}
+                P(x = k) = 
+                \begin{pmatrix}
+                    n \\
+                    k \\
+                \end{pmatrix}
+                \cdot p^{k} \cdot (1 - p)^{n - k}.
+            \end{equation*}
+            \begin{itemize}
+                \item $\binom{n}{k}$ (read as "$n$ choose $k$") is the binomial coefficient, representing the number of ways to choose $k$ successes from $n$ trials.
+                \item $p$ is the probability of success on an individual trial.
+                \item $1 - p$ is the probability of failure (since the trials are binary, the sum of the probabilities of success and failure is 1).
+                \item $p^{k}$ is the probability of having $k$ successes.
+                \item $(1 - p)^{n - k}$ is the probability of having $n - k$ failures.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{examnotes}

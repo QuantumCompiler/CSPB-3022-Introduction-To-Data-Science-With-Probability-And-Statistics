@@ -3,7 +3,7 @@
 %---------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{solutionclass}[]
-\LoadClass[a4paper, twoside, 11pt, twocolumn]{book}
+\LoadClass[a4paper, twoside, 11pt]{book}
 \newcommand{\authorName}{Taylor Larrechea}
 \newcommand{\classCode}{CSPB 3022}
 \newcommand{\className}{Introduction To Data Science With Probability And Statistics}
