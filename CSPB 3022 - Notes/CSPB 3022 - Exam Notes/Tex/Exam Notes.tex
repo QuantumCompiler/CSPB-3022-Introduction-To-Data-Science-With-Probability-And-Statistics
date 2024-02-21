@@ -177,4 +177,178 @@
             \end{itemize}
         \end{itemize}
     \end{itemize}
+
+    \subsubsection*{groupby}
+
+    The \texttt{groupby} method is used to split data into groups based on some criteria, apply a function to each group independently, and then combine the results into a data structure. The process 
+    is often summarized as split-apply-combine.
+
+    The way \texttt{groupby} works is by the following:
+
+    \begin{itemize}
+        \item \textbf{Split}: The data is divided into groups based on one or more keys. This is done by mapping a function over the index or columns of the DataFrame.
+        \item \textbf{Apply}: A function is applied to each group independently. This function could be an aggregation (computing a summary statistic), transformation (standardizing data within a group), 
+        or filtration (removing data based on group properties).
+        \item \textbf{Combine}: The results of the function application are combined into a new data structure.
+    \end{itemize}
+
+    The basic syntax for how \texttt{groupby} works is as follows:
+
+    \begin{code}[Python]
+    df.groupby(by=None, axis=0, level=None, as_index=True, sort=True, group_keys=True, squeeze=NoDefault.no_default, observed=False, dropna=True)
+    \end{code}
+
+    \begin{itemize}
+        \item \textbf{by}: Specifies the grouping criteria. Can be a function, column name, or list of column names.
+        \item \textbf{axis}: Determines whether to group by rows (0) or columns (1).
+        \item \textbf{level}: If the axis is a MultiIndex (hierarchical), groups by a particular level or levels.
+        \item \textbf{as\_index}: For aggregated output, returns object with group labels as the index. Setting it to False will return group labels in the columns.
+        \item \textbf{sort}: Sorts group keys. By default, it's set to True.
+    \end{itemize}
+
+    \begin{highlight}[groupby Example]
+        Here is a simple example of utilizing \texttt{groupby} in Pandas:
+
+    \begin{code}[Python]
+    import pandas as pd
+
+    # Example DataFrame
+    data = {
+        'Date': ['2023-01-01', '2023-01-01', '2023-01-02', '2023-01-02', '2023-01-03'],
+        'Product': ['A', 'B', 'A', 'A', 'B'],
+        'Sales': [100, 200, 150, 100, 250]
+    }
+    df = pd.DataFrame(data)
+    
+    # Group by 'Product' and sum up the sales
+    grouped_df = df.groupby('Product')['Sales'].sum()
+    
+    print(grouped_df)            
+    \end{code}
+    \end{highlight}
+
+    \subsubsection*{agg}
+
+    The \texttt{agg} method in Pandas, when used with groupby, is a versatile tool for performing multiple aggregation operations on your grouped data. It allows for more flexibility than just applying 
+    a single aggregate function like \texttt{sum} or \texttt{mean} directly. With \texttt{agg}, you can apply different aggregation functions to your data simultaneously, and even specify custom functions 
+    to suit your analysis needs.
+
+    After grouping your DataFrame with the \texttt{groupby} method, you can use \texttt{agg} to specify one or more aggregation operations to apply to the grouped data. \texttt{agg} can take a variety 
+    of inputs:
+
+    \begin{itemize}
+        \item A single aggregation function as a string (e.g. \texttt{'sum'}, \texttt{'mean'}).
+        \item A list of functions (e.g., \texttt{['sum', 'mean', 'max']}), applying each function to each column of each group.
+        \item A dictionary where keys are column names and values are functions or lists of functions, allowing different aggregation for different columns.
+    \end{itemize}
+
+    \begin{highlight}[agg Example]
+        Expanding on the previous example that was used with \texttt{groupby}, the example below encapsulates how to use the \texttt{agg} function with \texttt{groupby}:
+
+    \begin{code}[Python]
+    import pandas as pd
+
+    # Example DataFrame
+    data = {
+        'Date': ['2023-01-01', '2023-01-01', '2023-01-02', '2023-01-02', '2023-01-03'],
+        'Product': ['A', 'B', 'A', 'A', 'B'],
+        'Sales': [100, 200, 150, 100, 250]
+    }
+    df = pd.DataFrame(data)
+    
+    # Group by 'Product' and apply multiple aggregation functions to 'Sales'
+    grouped_df = df.groupby('Product')['Sales'].agg(['sum', 'mean', 'max'])
+    
+    print(grouped_df)        
+    \end{code}
+    This would output the total, average, and maximum sales for each product.
+
+    More advanced usage can be applied to the \texttt{agg} function, below is an example with the previous data frame in the last example of this advanced usage:
+
+    \begin{code}[Python]
+    grouped_df = df.groupby('Product').agg({
+        'Sales': ['sum', 'mean'],
+        'Date': ['min', 'max']
+    })        
+    \end{code}
+    This performs a sum and mean aggregation on the \texttt{Sales} and finds the minimum and maximum \texttt{Date} for each \texttt{Product}.
+    \end{highlight}
+
+    \subsubsection*{Joining DataFrames}
+
+    Joining data frames is a fundamental operation in data analysis, allowing you to combine data from different sources based on common identifiers. Pandas offers several methods for joining DataFrames, 
+    akin to SQL joins, including \texttt{merge}, \texttt{join}, and \texttt{concat}. Understanding these methods and when to use each is key to effective data manipulation.
+
+    \begin{enumerate}
+        \item \textbf{merge}: The \texttt{merge} function is the most versatile method for joining two DataFrames. It allows you to perform inner, outer, left, and right joins by specifying how you 
+        want the DataFrames to be merged.
+        \begin{itemize}
+            \item \textbf{Syntax}: \scriptsize{\texttt{pd.merge(left, right, how='inner', on=None, left\_on=None, right\_on=None, left\_index=False, right\_index=False)}} \normalsize
+            \item \textbf{Parameters}:
+            \begin{itemize}
+                \item \texttt{left, right}: The DataFrames you want to join.
+                \item \texttt{how}: Specifies the type of join \texttt{('left', 'right', 'outer', 'inner')}.
+                \item \texttt{on}: The column(s) to join on. Must be found in both DataFrames.
+                \item \texttt{left\_on, right\_on}: Columns from the left and right DataFrames to use as keys if they have different names.
+                \item \texttt{left\_index, right\_index}: If True, use the index (row labels) from the left or right DataFrame as its join key(s).
+            \end{itemize}
+        \end{itemize}
+        \begin{highlight}[merge Example]
+            Below is a simple example of how \texttt{merge} works by joining DataFrames:
+
+    \begin{code}[Python]
+    import pandas as pd
+
+    # Example DataFrames
+    df1 = pd.DataFrame({'key': ['A', 'B', 'C', 'D'], 'value': range(4)})
+    df2 = pd.DataFrame({'key': ['B', 'D', 'D', 'E'], 'value': range(4, 8)})
+    
+    # Inner join on 'key'
+    inner_joined = pd.merge(df1, df2, on='key', how='inner')
+    
+    # Outer join on 'key'
+    outer_joined = pd.merge(df1, df2, on='key', how='outer')            
+    \end{code}
+        \end{highlight}
+        \item \textbf{join}: The \texttt{join} method is a convenient method for combining DataFrames based on their indexes or on a key column. It's a simpler interface than \texttt{merge} for index-based 
+        joining.
+        \begin{itemize}
+            \item \textbf{Syntax}: \texttt{DataFrame.join(other, on=None, how='left', lsuffix='', rsuffix='')}
+            \item \textbf{Parameters}:
+            \begin{itemize}
+                \item \texttt{other}: The DataFrame to join with.
+                \item \texttt{on}: The column or index level names to join on in the \texttt{other} DataFrame. Must be found in both the calling DataFrame and \texttt{other}.
+                \item \texttt{how}: Type of join \texttt{('left', 'right', 'outer', 'inner')}.
+                \item \texttt{lsuffix, rsuffix}: Suffixes to apply to overlapping column names in the DataFrames.
+            \end{itemize}
+        \end{itemize}
+        \begin{highlight}[join Example]
+            Below is a simple example of how \texttt{join} works by joining DataFrames:
+    \begin{code}[Python]
+    # Assuming df1 and df2 from the previous example
+    # Join df2 to df1 using the index of df1 and the 'key' column of df2
+    joined = df1.join(df2.set_index('key'), on='key', how='left', lsuffix='_df1', rsuffix='_df2')        
+    \end{code}
+        \end{highlight}
+        \item \textbf{concat}: The \texttt{concat} function is used for concatenating DataFrames along a particular axis (row-wise or column-wise). It's useful for stacking DataFrames vertically or horizontally.
+        \begin{itemize}
+            \item \textbf{Syntax}: \texttt{pd.concat(objs, axis=0, join='outer')}
+            \item \textbf{Parameters}:
+            \begin{itemize}
+                \item \texttt{objs}: A sequence of DataFrames to concatenate.
+                \item \texttt{axis}: The axis to concatenate along (0 for rows, 1 for columns).
+                \item \texttt{join}: How to handle indexes on other axis \texttt{('outer', 'inner')}.
+            \end{itemize}
+        \end{itemize}
+        \begin{highlight}[concat Example]
+            Below is a simple example of how \texttt{concat} works by joining DataFrames:
+    \begin{code}[Python]
+    # Vertical concatenation
+    vertical_concat = pd.concat([df1, df2])
+    
+    # Horizontal concatenation, assuming same indexes
+    horizontal_concat = pd.concat([df1, df2], axis=1)        
+    \end{code}
+        \end{highlight}
+    \end{enumerate}
 \end{examnotes}
