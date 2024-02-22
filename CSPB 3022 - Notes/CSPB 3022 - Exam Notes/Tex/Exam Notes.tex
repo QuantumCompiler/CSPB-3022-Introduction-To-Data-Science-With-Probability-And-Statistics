@@ -510,4 +510,133 @@
     \begin{center}
         \includegraphics[scale = 0.75]{Images/Skew.png}
     \end{center}
+
+    \subsubsection*{Probability}
+
+    In probability, particularly sets, there is certain terminology that is used. In the context of set notation, the following are terms that are pertinent to probability theory are
+
+    \begin{enumerate}
+        \item \textbf{Complement}: The complement of a set $A$, denoted as $A'$ or $A^{c}$, represents all elements not in $A$ but within the universal set $U$, which contains all possible outcomes. 
+        In probability, the complement of an event represents the probability that the event does not happen.
+        \begin{itemize}
+            \item \textbf{Notation}: $A^{c}$ of $A'$
+            \item \textbf{Formula}: The formula for calculating the complement of the probability of $A$ $(P(A))$ is
+            \begin{center}
+                \begin{highlightbox}
+                    P(A') = 1 - P(A)
+                \end{highlightbox}
+            \end{center}
+        \end{itemize}
+        \item \textbf{Intersection}: The intersection of two sets $A$ and $B$, denoted as $A \cap B$, represents all elements that are both in $A$ and in $B$. In probability, the intersection of two
+        events represents the probability that both events occur simultaneously.
+        \begin{itemize}
+            \item \textbf{Notation}: $A \cap B$
+            \item \textbf{Formula}: The formula for calculating $P(A \cap B)$ depends on whether events $A$ and $B$ are independent or dependent.
+            \begin{itemize}
+                \item For \textbf{independent events}
+                \begin{center}
+                    \begin{highlightbox}
+                        P(A \cap B) = P(A) \cdot P(B)
+                    \end{highlightbox}
+                \end{center}
+                \item For \textbf{dependent events}, you need additional information to calculate $P(A \cap B)$ directly.
+            \end{itemize}
+        \end{itemize}
+        \item \textbf{Union} The union of two sets $A$ and $B$, denoted as $A \cup B$, represents all elements that are in $A$, in $B$, or in both. In probability, the union of two events represents 
+        the probability that at least one of the events occurs.
+        \begin{itemize}
+            \item \textbf{Notation}: $A \cup B$
+            \item \textbf{Formula}: The formula for calculating the union of two probabilities is
+            \begin{center}
+                \begin{highlightbox}
+                    P(A \cup B) = P(A) + P(B) - P(A \cap B)
+                \end{highlightbox}
+            \end{center}
+        \end{itemize}
+    \end{enumerate}
+
+    \subsubsection*{Event Space}
+
+    Event Space, also known as Sample Space in the context of probability, is a fundamental concept that represents all possible outcomes of a probabilistic experiment. Understanding the event space 
+    is crucial for calculating probabilities, as it sets the stage for identifying specific events within the realm of all outcomes.
+
+    We define event and sample space as the following:
+    \begin{itemize}
+        \item \textbf{Sample Space (S)}: The set of all possible outcomes of a probabilistic experiment. It could be finite or infinite, depending on the nature of the experiment.
+        \item \textbf{Event (E)}: Any subset of the sample space. An event is a specific outcome or a combination of outcomes that we're interested in.
+    \end{itemize}
+
+    The type of sample spaces are the following:
+    \begin{itemize}
+        \item \textbf{Finite Sample Space}: When the number of possible outcomes is countable and limited. For example, rolling a six-sided die has a finite sample space of \texttt{\{1, 2, 3, 4, 5, 6\}}.
+        \item \textbf{Infinite Sample Space}: When the number of possible outcomes is uncountable or unlimited. For example, measuring the time it takes for something to happen could have an infinite 
+        number of possible outcomes.
+    \end{itemize}
+
+    \subsubsection*{Conditional Probability}
+
+    Conditional probability is a fundamental concept in probability theory that deals with finding the probability of an event given that another event has occurred. This concept is crucial for 
+    understanding the relationship between two events and how the occurrence of one event affects the likelihood of another.
+
+    The conditional probability of an event $A$ given that event $B$ has occurred is denoted as $P(A|B)$ and is defined as:
+
+    \begin{center}
+        \begin{highlightbox}
+            P(A|B) = \frac{P(A \cap B)}{P(B)}
+        \end{highlightbox}
+    \end{center}
+    provided that $P(B) > 0$.
+
+    The way we can interpret conditional probability is the following:
+    \begin{itemize}
+        \item $P(A|B)$ is read as `the probability of $A$ given $B$'.
+        \item It quantifies how the probability of $A$ changes when we know that $B$ has occurred.
+        \item This is different from the probability of $A$ occurring in isolation, without any knowledge about $B$.
+    \end{itemize}
+    Key points that can be taken away from conditional probability:
+    \begin{itemize}
+        \item \textbf{Dependence}: Conditional probability is used when the occurrence of one event affects the probability of another, indicating a dependency between events.
+        \item \textbf{Recalculation of Probabilities}: Knowing that $B$ has occurred may change the sample space and, consequently, the probabilities of subsequent events.
+        \item \textbf{Bayes' Theorem}: A fundamental result that follows from the concept of conditional probability, allowing for the update of probabilities as more evidence becomes available.
+    \end{itemize}
+
+    \subsubsection*{Bayes Theorem}
+
+    Bayes' Theorem is a powerful tool in probability theory that allows us to update our beliefs about the probability of an event based on new evidence. It's named after Thomas Bayes (1701-1761), a 
+    British statistician and philosopher. This theorem is particularly useful in the field of data science for making predictions under uncertainty and has applications ranging from spam filtering 
+    to medical diagnosis.
+
+    Bayes' Theorem is as follows:
+    \begin{center}
+        \begin{highlightbox}
+            P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
+        \end{highlightbox}
+    \end{center}
+    where:
+    \begin{itemize}
+        \item $P(A|B)$ is the posterior probability of event $A$ occurring given that $B$ has occurred.
+        \item $P(B|A)$ is the likelihood, the probability of event $B$ occurring given that $A$ has occurred.
+        \item $P(A)$ is the prior probability of event $A$ occurring.
+        \item $P(B)$ is the marginal probability of event $B$ occurring.
+    \end{itemize}
+
+    \subsubsection*{Independence}
+
+    Independence is a key concept in probability theory that describes a situation where the occurrence of one event does not affect the probability of another event occurring. Two events, $A$ and $B$,
+    considered independent if and only if the occurrence of $A$ has no impact on the probability of $B$ happening, and vice versa.
+
+    The formal definition of independence is two events $A$ and $B$ are independent if any of the following equivalent statements holds true:
+    \begin{enumerate}
+        \item The probability that both $A$ and $B$ occur is equal to the product of the probabilities of each event occurring separately:
+        \begin{equation*}
+            P(A \cap B) = P(A) \cdot P(B)
+        \end{equation*}
+        \item The conditional probability of $A$ given $B$ is the same as the probability of $A$, and vice versa:
+        \begin{align*}
+            P(A|B) & = P(A) \\
+            P(B|A) & = P(B)
+        \end{align*}
+    \end{enumerate}
+    Independence intuitively means that knowing whether $B$ shas occurred provides no information about the occurrence of $A$, and the reverse is also true. For instance, if you flip a fair coin twice,
+    the outcome of the first flip does not influence the outcome of the second flip; these events are independent.
 \end{examnotes}
