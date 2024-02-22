@@ -120,35 +120,32 @@
             \item Permutations are the arrangements of objects in a specific order.
             \item The number of permutations of $n$ distinct objects is $n!$ ($n$ factorial), which is the product of all positive integers up to $n$.
             \item For arranging $r$ objects out of $n$ available objects, the formula is
-            \begin{equation*}
-                ^{n}P_{r} = \frac{n!}{(n - r)!}.
-            \end{equation*}
+            \begin{center}
+                \begin{highlightbox}
+                    ^{n}P_{r} = \frac{n!}{(n - r)!}.
+                \end{highlightbox}
+            \end{center}
         \end{itemize}
         \item \textbf{Combinations}
         \begin{itemize}
             \item Combinations refer to the selection of objects without regard to the order.
             \item The number of ways to choose $r$ objects from $n$ different objects is given by 
-            \begin{equation*}
-                \begin{pmatrix}
-                    n \\
-                    r \\
-                \end{pmatrix}
-                = \frac{n!}{r!(n - r)!}.
-            \end{equation*}
+            \begin{center}
+                \begin{highlightbox}
+                    {n \choose r} = \frac{n!}{r!(n - r)!}.
+                \end{highlightbox}
+            \end{center}
             \item Combinations are used when the order doesn't matter.
         \end{itemize}
         \item \textbf{Binomial Theorem}
         \begin{itemize}
             \item It provides a formula for the expansion of powers of a binomial (sum of two terms).
             \item The Binomial Theorem states that:
-            \begin{equation*}
-                (a + b)^{n} = \sum_{k = 0}^{n} 
-                \begin{pmatrix}
-                    n \\
-                    k \\
-                \end{pmatrix}
-                \cdot a^{n - k} \cdot b^{k}
-            \end{equation*}
+            \begin{center}
+                \begin{highlightbox}
+                    (a + b)^{n} = \sum_{k = 0}^{n} {n \choose k} \cdot a^{n - k} \cdot b^{k}
+                \end{highlightbox}
+            \end{center}
             \begin{itemize}
                 \item This means the expansion is a sum of terms, where the exponents of a start at $n$ and decrease to 0, while the exponents of $b$ start at 0 and increase to $n$. The coefficients 
                 of each term are the corresponding binomial coefficients.
@@ -160,14 +157,11 @@
             \item A binomial distribution is a discrete probability distribution that models the number of successes in a fixed number of independent Bernoulli trials. A Bernoulli trial is an experiment 
             with exactly two possible outcomes, typically termed "success" and "failure".
             \item In the context of the binomial distribution, $P(x = k)$ denotes the probability of getting exactly $k$ successes in $n$ trials. The formula for this is
-            \begin{equation*}
-                P(x = k) = 
-                \begin{pmatrix}
-                    n \\
-                    k \\
-                \end{pmatrix}
-                \cdot p^{k} \cdot (1 - p)^{n - k}.
-            \end{equation*}
+            \begin{center}
+                \begin{highlightbox}
+                    P(x = k) = {n \choose k} \cdot p^{k} \cdot (1 - p)^{n - k}.
+                \end{highlightbox}
+            \end{center}
             \begin{itemize}
                 \item $\binom{n}{k}$ (read as "$n$ choose $k$") is the binomial coefficient, representing the number of ways to choose $k$ successes from $n$ trials.
                 \item $p$ is the probability of success on an individual trial.
@@ -351,4 +345,169 @@
     \end{code}
         \end{highlight}
     \end{enumerate}
+
+    \subsubsection*{Measures Of Central Tendency}
+
+    There are core ways we can measure information about data, below are some pertinent ways that we measure central tendency in data science:
+
+    \begin{enumerate}
+        \item \textbf{Mean} - The mean, often referred to as the average, is calculated by summing all the values in the data set and then dividing by the number of values. It's a measure that is 
+        sensitive to outliers, meaning that a single very high or very low value can significantly affect the mean.
+
+        The formula for calculating the mean of a data set is:
+
+        \begin{center}
+            \begin{highlightbox}
+                \text{Mean} = \frac{\sum_{i = 1}^{n} x_{i}}{n}
+            \end{highlightbox}
+        \end{center}
+        where $x_{i}$ represents each value in the dat set and $n$ is the total number of values.
+        \item \textbf{Median} - The median is the middle value in a data set when the values are arranged in ascending or descending order. If there's an even number of observations, the median is the 
+        average of the two middle numbers. Unlike the mean, the median is not affected by outliers, making it a better measure of central tendency for skewed distributions.
+        \begin{itemize}
+            \item \textbf{Finding The Median}:
+            \begin{itemize}
+                \item Arrange the data in ascending order.
+                \item If the number of observations $(n)$ is odd, the median is the value at position $\frac{n + 1}{2}$.
+                \item If $n$ is even, the median is the average of the values at positions $\frac{n}{2}$ and $\frac{n}{2} + 1$.
+            \end{itemize}
+        \end{itemize}
+        \item \textbf{Mode} - The mode is the value that appears most frequently in a data set. A data set may have one mode (unimodal), more than one mode (bimodal or multimodal), or no mode at all 
+        if all values occur with the same frequency. The mode is particularly useful for categorical data where we want to identify the most common category.
+        \begin{itemize}
+            \item \textbf{Key Characteristics}:
+            \begin{itemize}
+                \item The mode is the only measure of central tendency that can be used with nominal data (data categorized without a natural order).
+                \item A data set may have multiple modes, making it a good measure for understanding variability in data.
+            \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+
+    \begin{highlight}[Central Tendency Example]
+        Consider the simple data set: \texttt{2,3,3,5,7,10}
+        \subsubsection*{Mean}
+        \begin{equation*}
+            \text{Mean} = \frac{\sum_{i = 1}^{n} x_{i}}{n} = \frac{2 + 3 + 3 + 5 + 7 + 10}{6} = \frac{30}{6} = 5.
+        \end{equation*}
+        \subsubsection*{Median}
+        The data set is even, so the median is the average of the middle values (3rd and 4th values):
+        \begin{equation*}
+            \text{Median} = \frac{3 + 5}{2} = \frac{8}{2} = 4.
+        \end{equation*}
+        \subsubsection*{Mode}
+        The value \texttt{3} appears most frequently, so the mode of this data set is \texttt{3}.
+    \end{highlight}
+
+    \subsubsection*{Plot Interpretation}
+
+    Plots are a vital concept in data science. Interpreting them is a vital skill and important for understanding data and how to draw conclusions. For this, we have created three types of plots that
+    are common in data science. These plots can be seen below.
+
+    \begin{center}
+        \includegraphics[scale=0.5]{Images/Plot Interpretation.png}
+    \end{center}
+
+    \begin{enumerate}
+        \item \textbf{Box Plot}: A box plot (or box-and-whisker plot) provides a visual summary of the key aspects of a distribution:
+        \begin{itemize}
+            \item \textbf{Central line}: Represents the median of the data. In our box plot, the median is around 0, indicating the central tendency of the distribution.
+            \item \textbf{Box}: The edges of the box (the interquartile range, IQR) show the 25th percentile (Q1) and the 75th percentile (Q3) of the data. The length of the box indicates the spread 
+            of the central 50\% of the data. A shorter box suggests less variability in the middle half of the data.
+            \item \textbf{Whiskers}: Extend from the box to show the range of the data. Typically, they extend to 1.5 * IQR beyond the quartiles, though this can vary. Points beyond the whiskers are 
+            considered outliers and are often plotted as individual points.
+            \item \textbf{Outliers}: Points outside the whiskers are plotted individually, indicating that they are unusual compared to the rest of the data. In our plot, there are a few outliers on 
+            both sides, indicating data points significantly higher or lower than the majority.
+        \end{itemize}
+        \item \textbf{Histogram}: A histogram displays the distribution of data by forming bins along the range of the data and then drawing bars to show the number of observations that fall in each bin:
+        \begin{itemize}
+            \item \textbf{Bins}: The x-axis represents bins or intervals of values. In our histogram, data is divided into 10 bins.
+            \item \textbf{Height of bars}: The y-axis represents the frequency of data points within each bin. The height of a bar shows how many data points fall into that range.
+            \item \textbf{Distribution shape}: The histogram helps identify the distribution shape of the data, whether it's normal, skewed, or bimodal, for example. Our histogram suggests a roughly 
+            normal distribution, as the bars form a bell-shaped curve around the center.
+        \end{itemize}
+        \item \textbf{Violin Plot}: A violin plot combines elements of box plots and density plots, providing a deeper understanding of the distribution:
+        \begin{itemize}
+            \item \textbf{Outer shape}: Represents the kernel density estimation of the data, showing the distribution's density. Thicker sections of the violin plot indicate a higher density of data 
+            points, while thinner sections indicate lower density.
+            \item \textbf{Inner box plot}: Often included within the violin, showing the median (central dot) and the interquartile range (thick bar). The violin plot in our example shows a median 
+            around 0, similar to the box plot, with the bulk of data points concentrated around the center, indicating the central tendency and variability.
+            \item \textbf{Width}: The width of the violin at different values indicates the density of the data at those values. In our plot, the widest part is around the median, suggesting the highest 
+            density of data points is near the center of the distribution.
+        \end{itemize}
+    \end{enumerate}
+
+    \subsubsection*{IQR}
+
+    The Interquartile Range (IQR) is a measure of statistical dispersion, or variability, that indicates the spread of the middle 50\% of a dataset. It's calculated as the difference between the 75th 
+    percentile (Q3) and the 25th percentile (Q1) of the data. The IQR is used to build box plots, as we've seen, and is helpful for identifying outliers.
+
+    In essence, the IQR can be calculated with
+
+    \begin{center}
+        \begin{highlightbox}
+            \text{IQR} = Q3 - Q1.
+        \end{highlightbox}
+    \end{center}
+    where
+    \begin{itemize}
+        \item $Q1$ (the first quartile) is the median of the first half of the dataset (the 25th percentile).
+        \item $Q3$ (the third quartile) is the median of the second half of the dataset (the 75th percentile).
+    \end{itemize}
+
+    \begin{highlight}[IQR Strategy]
+        The steps to calculate the IQR are as follows:
+        \begin{enumerate}
+            \item \textbf{Order the Data}: Arrange the data points in ascending order.
+            \item \textbf{Find the Median (Q2)}: This divides the dataset into two halves.
+            \item \textbf{Find Q1 and Q3}:
+            \begin{itemize}
+                \item $Q1$ is the median of the data points to the left of the median of the dataset.
+                \item $Q3$ is the median of the data points to the right of the median.
+            \end{itemize}
+            \item \textbf{Calculate the IQR}: Subtract $Q1$ from $Q3$.
+        \end{enumerate}
+    \end{highlight}
+
+    IQR is important because:
+    \begin{itemize}
+        \item \textbf{Resistant to Outliers}: Unlike range and standard deviation, the IQR focuses on the middle bulk of the data and is not affected by outliers. This makes it a more robust measure 
+        of spread for skewed distributions.
+        \item \textbf{Identifying Outliers}: The IQR is used to define outliers. A common rule is that an outlier is any data point that lies more than 1.5 times the IQR above the third quartile (Q3) 
+        or below the first quartile (Q1).
+    \end{itemize}
+
+    \begin{highlight}[IQR Example]
+        Consider the sample data set \texttt{3,7,5,8,6,9}:
+
+        \begin{enumerate}
+            \item \textbf{Ordered Data Set}: \texttt{3,5,6,7,8,9}
+            \item \textbf{Median}: The median of this data set is $\frac{6 + 7}{2} = 6.5$
+            \item \textbf{Find Q1 and Q3}:
+            \begin{itemize}
+                \item $Q1$ is the median of the lower 50\%, \texttt{(3,5,6)}, and is 5
+                \item $Q3$ is the median of the upper 50\%, \texttt{(7,8,9)}, and is 8
+            \end{itemize}
+            \item \textbf{Calculate IQR} $IQR = Q3 - Q1 = 8 - 5 = 3$
+        \end{enumerate}
+    \end{highlight}
+
+    \subsubsection*{Skew}
+
+    Skewness is a measure of the asymmetry of the probability distribution of a real-valued random variable. In simpler terms, it's a way to describe the direction and extent to which a distribution 
+    deviates from a normal distribution, where the mean, median, and mode are all the same.
+
+    The different types of skews are:
+
+    \begin{itemize}
+        \item \textbf{Positive Skew (Right-Skewed)}: The tail on the right side of the distribution is longer or fatter than the left side. In a positively skewed distribution, the mean is typically 
+        greater than the median, which is greater than the mode. This type of skew indicates that there are a number of exceptionally high values pulling the mean to the right.
+        \item \textbf{Negative Skew (Left-Skewed)}: The tail on the left side of the distribution is longer or fatter than the right side. In a negatively skewed distribution, the mean is typically 
+        less than the median, which is less than the mode. This skew indicates that there are a number of exceptionally low values pulling the mean to the left.
+    \end{itemize}
+
+    When interpreting the central tendency from a skewed data set, the mean is located on the side of the skew. We can see the different central tendencies of each type of skew below.
+
+    \begin{center}
+        \includegraphics[scale = 0.75]{Images/Skew.png}
+    \end{center}
 \end{examnotes}
