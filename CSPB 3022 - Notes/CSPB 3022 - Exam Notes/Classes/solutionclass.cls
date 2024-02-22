@@ -531,3 +531,8 @@
     \clearpage
     \subsection*{#1}
 }{\clearpage}
+\newenvironment{cheatsheet}[1]{
+    \clearpage
+    \twocolumn
+    \subsection*{#1}
+}{\onecolumn \clearpage}
