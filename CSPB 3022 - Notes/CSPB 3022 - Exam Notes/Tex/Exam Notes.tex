@@ -724,9 +724,10 @@
 
     The union of two probabilistic events are
 
-    \begin{equation*}
-        P(A \cup B) = P(A) + P(B) - P(A \cap B)
-    \end{equation*}
+    \begin{align*}
+        P(A \cup B) & = P(A) + P(B) - P(A \cap B) \\
+        & = 1 - P(A' \cup B')
+    \end{align*}
 
     \subsubsection*{Conditional Probability}
 
@@ -735,6 +736,27 @@
     \begin{equation*}
         P(A|B) = \frac{P(A \cap B)}{P(B)}
     \end{equation*}
+
+    \subsubsection*{Individual Probability}
+
+    We can calculate the individual probability based upon the conditional probability with another event and the complement of the other event, namely
+
+    \begin{equation*}
+        P(B) = P(B|A)P(A) + P(B|A')P(A')
+    \end{equation*}
+
+    \subsubsection*{Contingency Table}
+
+    We can use contingency tables to determine probabilities of other events that we don't information about
+
+    \begin{center}
+        \begin{tabular}[h]{|c|c|c|c|}
+            \hline \text{Prob.} & $P(A)$ & $P(A')$ & Total \\ \hline
+            $P(B)$ & $P(A \cap B)$ & $P(A' \cap B)$ & $P(B)$ \\ \hline
+            $P(B')$ & $P(A \cap B')$ & $P(A' \cap B')$ & $P(B')$ \\ \hline
+            Total & $P(A)$ & $P(A')$ & 1 \\ \hline
+        \end{tabular}
+    \end{center}
 
     \subsubsection*{Bayes Theorem}
 
