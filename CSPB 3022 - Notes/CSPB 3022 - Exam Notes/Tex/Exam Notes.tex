@@ -841,7 +841,7 @@
         \item \textbf{Variance}: $\text{Var}(X) = p(1-p)$ or with 
         \begin{center}
             \begin{highlightbox}
-                \nu^{2} = \sum_{i}(x_{i} - \mu)^{2} \cdot p_{i}
+                \nu^{2} = \sum_{i}(x_{i} - \mu)^{2} \cdot p_{i} = \sqrt{\mu[x^{2}] - \mu[x]^2}
             \end{highlightbox}
         \end{center}
         where $\nu$ is the variance, $x_{i}$ is the individual observation, $\mu$ is the expected value of all observances, and $p_{i}$ is the probability of a given observance $x$.
@@ -869,7 +869,7 @@
         \item \textbf{Variance}: $\text{Var}(X) = np(1-p)$ or with
         \begin{center}
             \begin{highlightbox}
-                \nu^{2} = \sum_{i}(x_{i} - \mu)^{2} \cdot p_{i}
+                \nu^{2} = \sum_{i}(x_{i} - \mu)^{2} \cdot p_{i} = \sqrt{\mu[x^{2}] - \mu[x]^2}
             \end{highlightbox}
         \end{center}
         where $\nu$ is the variance, $x_{i}$ is the individual observation, $\mu$ is the expected value of all observances, and $p_{i}$ is the probability of a given observance $x$.
@@ -897,7 +897,7 @@
         \item \textbf{Variance}: $\text{Var}(X) = \lambda$ or with
         \begin{center}
             \begin{highlightbox}
-                \nu^{2} = \sum_{i}(x_{i} - \mu)^{2} \cdot p_{i}
+                \nu^{2} = \sum_{i}(x_{i} - \mu)^{2} \cdot p_{i} = \sqrt{\mu[x^{2}] - \mu[x]^2}
             \end{highlightbox}
         \end{center}
         where $\nu$ is the variance, $x_{i}$ is the individual observation, $\mu$ is the expected value of all observances, and $p_{i}$ is the probability of a given observance $x$.
@@ -1010,5 +1010,182 @@
         \item Determining the precision and reliability of statistical conclusions.
     \end{itemize}
     
-    It provides a concrete measure of variability, enhancing our understanding of the distribution of data points beyond the mean.    
+    It provides a concrete measure of variability, enhancing our understanding of the distribution of data points beyond the mean.
+    
+    \subsection*{Joint Distributions}
+
+    Joint distributions are crucial in the study of probability and statistics, allowing us to analyze the behavior of two or more random variables simultaneously. This concept is pivotal for understanding 
+    the relationship between variables and for modeling complex probabilistic scenarios.
+    
+    \subsubsection*{Definition}
+    
+    A joint distribution describes the probability distribution of two or more random variables occurring at the same time. It is represented by a joint probability mass function (PMF) for discrete 
+    variables, and a joint probability density function (PDF) for continuous variables.
+    
+    \subsubsection*{Joint Probability Mass Function (PMF) for Discrete Variables}
+    
+    For discrete random variables $X$ and $Y$, the joint PMF $p(x, y)$ gives the probability that $X$ equals $x$ and $Y$ equals $y$ simultaneously:
+    \begin{center}
+        \begin{highlightbox}
+            p(x, y) = P(X = x \text{ and } Y = y)
+        \end{highlightbox}
+    \end{center}
+    The sum of $p(x, y)$ over all possible values of $x$ and $y$ is 1.
+    
+    \subsubsection*{Joint Probability Density Function (PDF) for Continuous Variables}
+    
+    In the case of continuous random variables $X$ and $Y$, the joint PDF $f(x, y)$ describes the density of the probability that $X$ and $Y$ take on specific values within an infinitesimally small 
+    area. The integral of $f(x, y)$ over all possible values of $x$ and $y$ equals 1.
+    
+    \subsubsection*{Properties and Applications}
+    
+    \begin{itemize}
+        \item \textbf{Marginal Distribution}: Derived from the joint distribution by summing (for PMF) or integrating (for PDF) over the range of one variable, providing the distribution of one 
+        variable irrespective of the other.
+        \item \textbf{Conditional Distribution}: The distribution of one variable given the occurrence of another, calculated by dividing the joint distribution by the marginal distribution of the 
+        given variable.
+        \item \textbf{Independence}: Two variables are independent if the joint distribution is the product of their marginal distributions. Independence implies that the outcome of one variable 
+        does not affect the distribution of the other.
+    \end{itemize}
+    
+    \subsubsection*{Examples}
+    
+    \begin{itemize}
+        \item \textbf{Rolling Two Dice}: Analyzing the joint PMF of the sum and difference of the dice rolls to calculate probabilities for each outcome.
+        \item \textbf{Height and Weight}: Using the joint PDF to model the relationship between height and weight in a population, enabling the calculation of probabilities for certain combinations 
+        of these variables.
+    \end{itemize}
+
+    \subsection*{Covariance, Correlation, and Independence}
+
+    Understanding the relationships between two or more variables is pivotal in statistics and data science. Covariance, correlation, and independence are key concepts in this context.
+    
+    \subsubsection*{Covariance}
+    
+    Covariance assesses the joint variability of two random variables. It is defined by the formula:
+    
+    \begin{center}
+        \begin{highlightbox}
+            \text{Cov}(X, Y) = E[XY] - E[X]E[Y]
+        \end{highlightbox}
+    \end{center}
+    where $E$ denotes the expected value. A positive covariance indicates that the variables tend to move in the same direction, while a negative covariance suggests they move in opposite directions.
+    
+    \subsubsection*{Correlation}
+    
+    Correlation, specifically Pearson's correlation coefficient $r$, measures both the strength and direction of the linear relationship between two variables, calculated as:
+    
+    \begin{center}
+        \begin{highlightbox}
+            \rho(X,Y) = \frac{\text{Cov}(X, Y)}{\sigma_X \sigma_Y}
+        \end{highlightbox}
+    \end{center}
+    Here, $\sigma_X$ and $\sigma_Y$ represent the standard deviations of $X$ and $Y$, respectively. The correlation coefficient $r$ ranges from -1 to 1, with -1 indicating a perfect negative linear 
+    relationship, 1 indicating a perfect positive linear relationship, and 0 indicating no linear relationship.
+    
+    \subsubsection*{Independence}
+    
+    Two variables are considered independent if the occurrence of one does not affect the probability of occurrence of the other. Formally, $X$ and $Y$ are independent if and only if:
+    
+    \begin{center}
+        \begin{highlightbox}
+            P(X \cap Y) = P(X)P(Y)
+        \end{highlightbox}
+    \end{center}
+    
+    Statistically, independence implies a covariance of 0. However, a covariance of 0 does not necessarily indicate independence unless the variables are jointly normally distributed.
+    
+    \subsubsection*{Relationship Between Concepts}
+    
+    \begin{itemize}
+        \item \textbf{Covariance} provides a measure of how two variables move together, though its scale makes it difficult to interpret the strength of their relationship.
+        \item \textbf{Correlation} offers a standardized metric of covariance, presenting a dimensionless quantity that reflects the linear relationship's strength and direction.
+        \item \textbf{Independence} suggests that two variables do not affect each other's outcomes, implied by a correlation of 0. However, a correlation of 0 does not ensure independence, as it only 
+        addresses linear relationships.
+    \end{itemize}
+
+    \subsection*{Sampling}
+
+    Sampling is a fundamental process that involves selecting a subset of individuals or entities from a larger population to make inferences about the population's characteristics. This section covers 
+    different types of sampling, the population of interest, and the sampling frame.
+    
+    \subsubsection*{Types of Sampling}
+    
+    Sampling methods are broadly categorized into \textbf{probability sampling} and \textbf{non-probability sampling}.
+    
+    \subsubsection*{Probability Sampling}
+    
+    In probability sampling, every member of the population has a known, non-zero chance of being selected. It includes:
+    
+    \begin{itemize}
+        \item \textbf{Simple Random Sampling}: Each subset of the population has an equal chance of being selected.
+        \item \textbf{Stratified Sampling}: The population is divided into homogeneous subgroups, with random samples drawn from each.
+        \item \textbf{Cluster Sampling}: The population is divided into clusters, some of which are randomly selected for sampling.
+        \item \textbf{Systematic Sampling}: Every $n$th member of the population is selected, starting from a random point.
+    \end{itemize}
+    
+    \subsubsection*{Non-Probability Sampling}
+    
+    Non-probability sampling does not give every member of the population a known chance of selection. Types include:
+    
+    \begin{itemize}
+        \item \textbf{Convenience Sampling}: Sampling from easily accessible parts of the population.
+        \item \textbf{Judgmental or Purposive Sampling}: Selecting members based on the researcher's judgment.
+        \item \textbf{Quota Sampling}: Ensuring the sample reflects certain characteristics of the population.
+        \item \textbf{Snowball Sampling}: Study subjects recruit future subjects from their acquaintances.
+    \end{itemize}
+    
+    \subsubsection*{Population of Interest}
+    
+    The \textbf{population of interest} is the entire set of individuals or entities to which the study's findings aim to be generalized. Defining this population clearly is essential for the applicability 
+    and relevance of the research outcomes.
+    
+    \subsubsection*{Sampling Frame}
+    
+    The \textbf{sampling frame} is the list from which the sample is actually drawn, ideally encompassing the entire population of interest. The presence of a \textit{frame error}, where the frame 
+    does not perfectly match the population, can affect the sample's representativeness and the study's validity.
+
+    \subsection*{Multinomial Probabilities}
+
+    Multinomial probabilities extend binomial probabilities to scenarios with more than two possible outcomes in each trial, crucial for analyzing experiments with multiple categories or outcomes.
+    
+    \subsubsection*{Definition}
+    
+    The multinomial distribution generalizes the binomial distribution, modeling the probability of observing various counts among multiple categories over $n$ trials, with each trial resulting in one 
+    of $k$ possible outcomes.
+    
+    \subsubsection*{Formula}
+    
+    The probability mass function (PMF) for the multinomial distribution is given by:
+    
+    \begin{center}
+        \begin{highlightbox}
+            P(X_1 = x_1, X_2 = x_2, \ldots, X_k = x_k) = \frac{n!}{x_1! x_2! \cdots x_k!} p_1^{x_1} p_2^{x_2} \cdots p_k^{x_k}
+        \end{highlightbox}
+    \end{center}
+    
+    where:
+    \begin{itemize}
+        \item $n$ is the total number of trials,
+        \item $x_i$ is the count of outcome $i$, for $i = 1, 2, \ldots, k$,
+        \item $p_i$ is the probability of outcome $i$ in a single trial,
+        \item $\sum_{i=1}^{k} x_i = n$, $\sum_{i=1}^{k} p_i = 1$.
+    \end{itemize}
+    
+    \subsubsection*{Properties}
+    
+    \begin{itemize}
+        \item The sum of the probabilities of all possible outcomes is 1.
+        \item Each variable $X_i$ is binomially distributed, albeit not independently.
+        \item The expected value of $X_i$ is $n \cdot p_i$, with variance $n \cdot p_i \cdot (1 - p_i)$.
+    \end{itemize}
+    
+    \subsubsection*{Applications}
+    
+    Multinomial probabilities are applied in genetics, marketing, natural language processing, and more, modeling:
+    \begin{itemize}
+        \item Genetic inheritance patterns of multiple alleles.
+        \item Choice preferences among several product categories.
+        \item Word distributions across topics in a document.
+    \end{itemize}    
 \end{examnotes}
