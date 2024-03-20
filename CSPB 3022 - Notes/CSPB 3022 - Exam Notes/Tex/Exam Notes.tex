@@ -103,7 +103,7 @@
     \end{code}
     \end{highlight}
 
-    \subsubsection*{Combinatorics}
+    \subsection*{Combinatorics}
 
     Combinatorics is a branch of mathematics dealing with the study of countable, discrete structures and their properties. It's particularly important in computer science, where understanding how to 
     count and arrange objects is crucial for algorithm design, data structure optimization, and problem-solving. Here's a summary of the key concepts in combinatorics:
@@ -172,7 +172,7 @@
         \end{itemize}
     \end{itemize}
 
-    \subsubsection*{groupby}
+    \subsection*{groupby}
 
     The \texttt{groupby} method is used to split data into groups based on some criteria, apply a function to each group independently, and then combine the results into a data structure. The process 
     is often summarized as split-apply-combine.
@@ -221,7 +221,7 @@
     \end{code}
     \end{highlight}
 
-    \subsubsection*{agg}
+    \subsection*{agg}
 
     The \texttt{agg} method in Pandas, when used with groupby, is a versatile tool for performing multiple aggregation operations on your grouped data. It allows for more flexibility than just applying 
     a single aggregate function like \texttt{sum} or \texttt{mean} directly. With \texttt{agg}, you can apply different aggregation functions to your data simultaneously, and even specify custom functions 
@@ -268,7 +268,7 @@
     This performs a sum and mean aggregation on the \texttt{Sales} and finds the minimum and maximum \texttt{Date} for each \texttt{Product}.
     \end{highlight}
 
-    \subsubsection*{Joining DataFrames}
+    \subsection*{Joining DataFrames}
 
     Joining data frames is a fundamental operation in data analysis, allowing you to combine data from different sources based on common identifiers. Pandas offers several methods for joining DataFrames, 
     akin to SQL joins, including \texttt{merge}, \texttt{join}, and \texttt{concat}. Understanding these methods and when to use each is key to effective data manipulation.
@@ -346,7 +346,7 @@
         \end{highlight}
     \end{enumerate}
 
-    \subsubsection*{Measures Of Central Tendency}
+    \subsection*{Measures Of Central Tendency}
 
     There are core ways we can measure information about data, below are some pertinent ways that we measure central tendency in data science:
 
@@ -398,7 +398,7 @@
         The value \texttt{3} appears most frequently, so the mode of this data set is \texttt{3}.
     \end{highlight}
 
-    \subsubsection*{Plot Interpretation}
+    \subsection*{Plot Interpretation}
 
     Plots are a vital concept in data science. Interpreting them is a vital skill and important for understanding data and how to draw conclusions. For this, we have created three types of plots that
     are common in data science. These plots can be seen below.
@@ -436,7 +436,7 @@
         \end{itemize}
     \end{enumerate}
 
-    \subsubsection*{IQR}
+    \subsection*{IQR}
 
     The Interquartile Range (IQR) is a measure of statistical dispersion, or variability, that indicates the spread of the middle 50\% of a dataset. It's calculated as the difference between the 75th 
     percentile (Q3) and the 25th percentile (Q1) of the data. The IQR is used to build box plots, as we've seen, and is helpful for identifying outliers.
@@ -491,7 +491,7 @@
         \end{enumerate}
     \end{highlight}
 
-    \subsubsection*{Skew}
+    \subsection*{Skew}
 
     Skewness is a measure of the asymmetry of the probability distribution of a real-valued random variable. In simpler terms, it's a way to describe the direction and extent to which a distribution 
     deviates from a normal distribution, where the mean, median, and mode are all the same.
@@ -511,7 +511,7 @@
         \includegraphics[scale = 0.75]{Images/Skew.png}
     \end{center}
 
-    \subsubsection*{Probability}
+    \subsection*{Probability}
 
     In probability, particularly sets, there is certain terminology that is used. In the context of set notation, the following are terms that are pertinent to probability theory are
 
@@ -555,7 +555,7 @@
         \end{itemize}
     \end{enumerate}
 
-    \subsubsection*{Event Space}
+    \subsection*{Event Space}
 
     Event Space, also known as Sample Space in the context of probability, is a fundamental concept that represents all possible outcomes of a probabilistic experiment. Understanding the event space 
     is crucial for calculating probabilities, as it sets the stage for identifying specific events within the realm of all outcomes.
@@ -573,7 +573,7 @@
         number of possible outcomes.
     \end{itemize}
 
-    \subsubsection*{Conditional Probability}
+    \subsection*{Conditional Probability}
 
     Conditional probability is a fundamental concept in probability theory that deals with finding the probability of an event given that another event has occurred. This concept is crucial for 
     understanding the relationship between two events and how the occurrence of one event affects the likelihood of another.
@@ -600,7 +600,7 @@
         \item \textbf{Bayes' Theorem}: A fundamental result that follows from the concept of conditional probability, allowing for the update of probabilities as more evidence becomes available.
     \end{itemize}
 
-    \subsubsection*{Bayes Theorem}
+    \subsection*{Bayes Theorem}
 
     Bayes' Theorem is a powerful tool in probability theory that allows us to update our beliefs about the probability of an event based on new evidence. It's named after Thomas Bayes (1701-1761), a 
     British statistician and philosopher. This theorem is particularly useful in the field of data science for making predictions under uncertainty and has applications ranging from spam filtering 
@@ -620,7 +620,7 @@
         \item $P(B)$ is the marginal probability of event $B$ occurring.
     \end{itemize}
 
-    \subsubsection*{Independence}
+    \subsection*{Independence}
 
     Independence is a key concept in probability theory that describes a situation where the occurrence of one event does not affect the probability of another event occurring. Two events, $A$ and $B$,
     considered independent if and only if the occurrence of $A$ has no impact on the probability of $B$ happening, and vice versa.
@@ -784,3 +784,231 @@
         \end{align*}
     \end{itemize}
 \end{cheatsheet}
+
+\begin{examnotes}{Exam 2 Notes}
+    \subsection*{Random Variables}
+
+    A \textbf{random variable} is a variable whose possible values are numerical outcomes of a random phenomenon. Random variables are classified into two types:
+    
+    \begin{itemize}
+        \item \textbf{Discrete Random Variables}: These variables take on a countable number of distinct values. Example: The number of heads in a series of coin flips.
+        \item \textbf{Continuous Random Variables}: These variables can take on any value within a given range, making the set of possible values uncountably infinite. Example: The weight of a randomly 
+        selected bag of apples.
+    \end{itemize}
+    
+    \subsubsection*{Examples}
+    
+    \begin{enumerate}
+        \item \textbf{Coin Toss}: Let $X$ denote the number of heads in a coin toss. Since the outcomes are countable (head or tail), $X$ is a discrete random variable.
+        \item \textbf{Exam Scores}: Consider the scores of students in a test, ranging from 0 to 100. If $Y$ represents a randomly selected student's score, $Y$ is a discrete random variable because 
+        the scores, while within a range, are distinct and countable.
+        \item \textbf{Height of Students}: If $Z$ represents the height of a randomly chosen student, $Z$ is a continuous random variable because height can take on any value within a range, including decimals.
+    \end{enumerate}
+    
+    \subsubsection*{Key Properties}
+    
+    \begin{itemize}
+        \item \textbf{Probability Distribution}: This describes how probabilities are distributed over the values of the random variable. It's represented as a probability mass function (PMF) for 
+        discrete variables and a probability density function (PDF) for continuous variables.
+        \item \textbf{Expected Value (Mean)}: The long-run average value of the random variable.
+        \item \textbf{Variance and Standard Deviation}: Measures of the spread of the random variable's values around the mean.
+    \end{itemize}
+
+    \subsection*{Discrete Random Variables}
+
+    Discrete random variables play a crucial role in statistical distributions, particularly when outcomes are countable. Key distributions include the Bernoulli, Binomial, and Poisson distributions, 
+    each with distinct characteristics and applications.
+    
+    \subsubsection*{Bernoulli Distribution}
+    
+    The Bernoulli distribution models experiments with two outcomes: success (1) and failure (0), where each trial is independent.
+    
+    \begin{itemize}
+        \item \textbf{Probability Mass Function (PMF)}: For a probability of success $p$, the PMF is defined as
+        \begin{center}
+            \begin{highlightbox}
+                P(X = x) = p^x(1-p)^{1-x}
+            \end{highlightbox}
+        \end{center}
+        where $x \in \{0, 1\}$.
+        \item \textbf{Expected Value}: $E[X] = p$ and expected value is calculated with
+        \begin{center}
+            \begin{highlightbox}
+                E[x] = \sum_{i} x_{i}p_{i}
+            \end{highlightbox}
+        \end{center}
+        where $x_{i}$ is the value of the variable and $p_{i}$ is the probability of that value.
+        \item \textbf{Variance}: $\text{Var}(X) = p(1-p)$ or with 
+        \begin{center}
+            \begin{highlightbox}
+                \nu^{2} = \sum_{i}(x_{i} - \mu)^{2} \cdot p_{i}
+            \end{highlightbox}
+        \end{center}
+        where $\nu$ is the variance, $x_{i}$ is the individual observation, $\mu$ is the expected value of all observances, and $p_{i}$ is the probability of a given observance $x$.
+    \end{itemize}
+    
+    \subsubsection*{Binomial Distribution}
+    
+    This distribution extends the Bernoulli to $n$ independent trials, each with the same success probability $p$.
+    
+    \begin{itemize}
+        \item \textbf{PMF}: The probability of $k$ successes in $n$ trials is given by
+        \begin{center}
+            \begin{highlightbox}
+                P(X = k) = \binom{n}{k} p^k(1-p)^{n-k}
+            \end{highlightbox}
+        \end{center}
+        where $\binom{n}{k}$ denotes the binomial coefficient.
+        \item \textbf{Expected Value}: $E[X] = np$ and expected value is calculated with
+        \begin{center}
+            \begin{highlightbox}
+                E[x] = \sum_{i} x_{i}p_{i}
+            \end{highlightbox}
+        \end{center}
+        where $x_{i}$ is the value of the variable and $p_{i}$ is the probability of that value.
+        \item \textbf{Variance}: $\text{Var}(X) = np(1-p)$ or with
+        \begin{center}
+            \begin{highlightbox}
+                \nu^{2} = \sum_{i}(x_{i} - \mu)^{2} \cdot p_{i}
+            \end{highlightbox}
+        \end{center}
+        where $\nu$ is the variance, $x_{i}$ is the individual observation, $\mu$ is the expected value of all observances, and $p_{i}$ is the probability of a given observance $x$.
+    \end{itemize}
+    
+    \subsubsection*{Poisson Distribution}
+    
+    The Poisson distribution models the count of events in a fixed interval, with events occurring at a constant mean rate $\lambda$, independently of the last event.
+    
+    \begin{itemize}
+        \item \textbf{PMF}: For observing $k$ events
+        \begin{center}
+            \begin{highlightbox}
+                P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
+            \end{highlightbox}
+        \end{center}
+        where $\lambda$ is the rate of the event and $k$ is the number of events that occur.
+        \item \textbf{Expected Value}: $E[X] = \lambda$ and expected value is calculated with
+        \begin{center}
+            \begin{highlightbox}
+                E[x] = \sum_{i} x_{i}p_{i}
+            \end{highlightbox}
+        \end{center}
+        where $x_{i}$ is the value of the variable and $p_{i}$ is the probability of that value.
+        \item \textbf{Variance}: $\text{Var}(X) = \lambda$ or with
+        \begin{center}
+            \begin{highlightbox}
+                \nu^{2} = \sum_{i}(x_{i} - \mu)^{2} \cdot p_{i}
+            \end{highlightbox}
+        \end{center}
+        where $\nu$ is the variance, $x_{i}$ is the individual observation, $\mu$ is the expected value of all observances, and $p_{i}$ is the probability of a given observance $x$.
+    \end{itemize}
+    
+    \subsubsection*{Key Differences and Applications}
+    
+    \begin{itemize}
+        \item The \textbf{Bernoulli Distribution} is suitable for binary outcomes in a single trial, such as flipping a coin.
+        \item The \textbf{Binomial Distribution} is used for counting successes in a fixed number of Bernoulli trials, like the number of heads in multiple coin flips.
+        \item The \textbf{Poisson Distribution} efficiently models the count of events over a continuous interval, especially for rare events with a known average rate, such as emails received per hour.
+    \end{itemize}
+    
+    These distributions are foundational for modeling discrete processes, understanding the probabilistic nature of phenomena, and form the basis for statistical inference in data science.
+    
+    \subsection*{Continuous Random Variables}
+    Continuous random variables take on an infinite number of values. Key distributions:
+    
+    \subsubsection*{Normal (Gaussian) Distribution}
+    A symmetric distribution centered around the mean, $\mu$.
+    \begin{itemize}
+        \item \textbf{PDF}:
+        \begin{center}
+            \begin{highlightbox}
+                f(x) = \frac{1}{\sigma\sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+            \end{highlightbox}
+        \end{center}
+        \item \textbf{Properties}: Approximately 68\% of the data falls within one standard deviation of the mean.
+    \end{itemize}
+    
+    \subsubsection*{Exponential Distribution}
+    Describes the time between events in a Poisson process.
+    \begin{itemize}
+        \item \textbf{PDF}:
+        \begin{center}
+            \begin{highlightbox}
+                f(x) = \lambda e^{-\lambda x}
+            \end{highlightbox}
+        \end{center}
+        $x \geq 0$.
+        \item \textbf{Expected Value}:
+        \begin{center}
+            \begin{highlightbox}
+                E[X] = \frac{1}{\lambda}
+            \end{highlightbox}
+        \end{center}
+        \item \textbf{Variance}:
+        \begin{center}
+            \begin{highlightbox}
+                \nu = \frac{1}{\lambda^2}
+            \end{highlightbox}
+        \end{center}
+    \end{itemize}
+
+    \subsection*{Standard Deviation}
+
+    Standard deviation is a statistical measure that quantifies the amount of variation or dispersion in a set of data values. It indicates how much individual data points deviate from the mean 
+    (or expected value) of the data set.
+    
+    \subsubsection*{Formula}
+    
+    The standard deviation for a \textbf{population} is denoted as $\sigma$ and is calculated using the formula:
+    
+    \begin{center}
+        \begin{highlightbox}
+            \sigma = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^2} = \sqrt{\nu^{2}}
+        \end{highlightbox}
+    \end{center}
+    
+    where:
+    \begin{itemize}
+        \item $N$ is the number of observations in the population,
+        \item $x_i$ represents each individual observation,
+        \item $\bar{x}$ is the population mean,
+        \item $\nu$ is the variance.
+    \end{itemize}
+    
+    For a \textbf{sample} from the population, the sample standard deviation, denoted as $s$, uses Bessel's correction and is calculated as:
+    
+    \begin{center}
+        \begin{highlightbox}
+            s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2}
+        \end{highlightbox}
+    \end{center}
+    
+    where:
+    \begin{itemize}
+        \item $n$ is the sample size,
+        \item $x_i$ represents each individual sample observation,
+        \item $\bar{x}$ is the sample mean.
+    \end{itemize}
+    
+    \subsubsection*{Interpretation}
+    
+    The standard deviation is a critical tool in statistics, finance, and various fields, offering insights into the variability or risk of a dataset. In a normal distribution, approximately:
+    \begin{itemize}
+        \item 68\% of observations fall within one standard deviation of the mean,
+        \item 95\% within two standard deviations,
+        \item 99.7\% within three standard deviations.
+    \end{itemize}
+    
+    This empirical rule, also known as the 68-95-99.7 rule, emphasizes the role of standard deviation in evaluating the spread of a distribution.
+    
+    \subsubsection*{Applications}
+    
+    Standard deviation is instrumental in:
+    \begin{itemize}
+        \item Comparing the spread between datasets with different means,
+        \item Assessing financial risk and volatility,
+        \item Determining the precision and reliability of statistical conclusions.
+    \end{itemize}
+    
+    It provides a concrete measure of variability, enhancing our understanding of the distribution of data points beyond the mean.    
+\end{examnotes}
