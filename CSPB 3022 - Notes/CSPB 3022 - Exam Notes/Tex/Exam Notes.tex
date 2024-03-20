@@ -1187,5 +1187,116 @@
         \item Genetic inheritance patterns of multiple alleles.
         \item Choice preferences among several product categories.
         \item Word distributions across topics in a document.
+    \end{itemize}
+
+    \subsection*{Central Limit Theorem}
+
+    The Central Limit Theorem (CLT) is a cornerstone of statistics, asserting that the distribution of the sample mean of a large number of independent, identically distributed (i.i.d.) random variables 
+    approaches a normal distribution as the sample size increases, regardless of the original distribution's shape.
+    
+    \subsubsection*{Statement of the Central Limit Theorem}
+    
+    Given i.i.d. random variables $X_1, X_2, \ldots, X_n$ with mean $\mu$ and finite variance $\sigma^2$, the sample mean $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n}X_i$ follows a normal distribution 
+    $N\left(\mu, \frac{\sigma^2}{n}\right)$ as $n$ approaches infinity. Formally:
+    
+    \begin{center}
+        \begin{highlightbox}
+            \lim_{n \to \infty} P\left(a < \frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} < b\right) = \Phi(b) - \Phi(a)
+        \end{highlightbox}
+    \end{center}
+    where $\Phi$ represents the cumulative distribution function of the standard normal distribution.
+    
+    \subsubsection*{Implications}
+    
+    The CLT supports the assumption of normality in various statistical techniques, even when the population distribution is not known. It enables the approximation of probabilities associated with 
+    the sample mean, aiding in decision-making processes across numerous fields.
+    
+    \subsubsection*{Applications}
+    
+    \begin{itemize}
+        \item In \textbf{Polling and Surveys}, it allows for the estimation of population means from sample data.
+        \item In \textbf{Quality Control}, it assesses the distribution of means from multiple samples of product measurements.
+        \item In \textbf{Experimental Research}, it facilitates the analysis of mean outcomes to infer effects on the population.
+    \end{itemize}
+    
+    \subsection*{Standard Error and $Z$ Value}
+
+    The concepts of standard error (SE) and the $z$ value are fundamental in statistical inference, particularly in the contexts of hypothesis testing and constructing confidence intervals.
+    
+    \subsubsection*{Standard Error}
+    
+    The standard error measures the variability of a sample statistic (like the sample mean) relative to the actual population parameter, quantifying the uncertainty associated with the estimation. 
+    The standard error of the mean (SEM) is calculated as:
+    
+    \begin{center}
+        \begin{highlightbox}
+            SE_{\bar{x}} = \frac{\sigma}{\sqrt{n}}
+        \end{highlightbox}
+    \end{center}
+    where $\sigma$ is the population standard deviation and $n$ is the sample size. In practice, with the population standard deviation often unknown, the SEM is estimated using the sample standard 
+    deviation ($s$):
+    
+    \begin{center}
+        \begin{highlightbox}
+            SE_{\bar{x}} = \frac{s}{\sqrt{n}}
+        \end{highlightbox}
+    \end{center}
+    As the sample size increases, the standard error decreases, reflecting a higher precision in estimating the population parameter.
+    
+    \subsubsection*{$Z$ Value}
+    
+    The $z$ value, or $z$-score, indicates how many standard deviations an element is from the mean. In statistical inference, the $z$ value is calculated to determine the distance of a sample statistic 
+    from the null hypothesis value, normalized by the standard error:
+    
+    \begin{center}
+        \begin{highlightbox}
+            z = \frac{\bar{x} - \bar{x}}{SE_{\bar{x}}}
+        \end{highlightbox}
+    \end{center}
+    where $\bar{x}$ is the sample mean, $\bar{x}$ is the population mean under the null hypothesis, and $SE_{\bar{x}}$ is the standard error of the sample mean.
+    
+    \subsubsection*{Implications and Applications}
+    
+    \begin{itemize}
+        \item \textbf{Hypothesis Testing}: The $z$ value helps determine whether to reject the null hypothesis by comparing it to a critical value. If the $z$ value falls outside the critical range, 
+        the null hypothesis is rejected.
+        \item \textbf{Confidence Intervals}: The $z$ value is used to calculate the margin of error when constructing confidence intervals, leveraging the normal distribution approximation for large sample sizes.
+    \end{itemize}
+
+    \subsection*{Hypothesis Testing}
+
+    Hypothesis testing is a statistical method used to make decisions about a population parameter based on sample data. It involves the comparison of a null hypothesis ($H_0$) against an alternative 
+    hypothesis ($H_1$).
+    
+    \subsubsection*{Key Concepts}
+    
+    \begin{itemize}
+        \item \textbf{Null Hypothesis ($H_0$)}: A statement asserting there is no effect or no difference, serving as the default assumption.
+        \item \textbf{Alternative Hypothesis ($H_1$ or $H_a$)}: A statement contradicting the null hypothesis, asserting there is an effect or a difference.
+        \item \textbf{Type I Error}: Occurs when the null hypothesis is incorrectly rejected (false positive).
+        \item \textbf{Type II Error}: Occurs when the null hypothesis is not rejected when it is false (false negative).
+        \item \textbf{Significance Level ($\alpha$)}: The probability of committing a Type I error, typically set at 0.05.
+        \item \textbf{P-value}: The probability of obtaining test results at least as extreme as the observed results, under the assumption that the null hypothesis is correct.
+    \end{itemize}
+    
+    \subsubsection*{Steps in Hypothesis Testing}
+    
+    \begin{enumerate}
+        \item Formulate the null and alternative hypotheses.
+        \item Choose a significance level ($\alpha$).
+        \item Collect and analyze sample data.
+        \item Calculate the test statistic (e.g., $z$, $t$).
+        \item Determine the p-value or compare the test statistic to critical values.
+        \item Make a decision: Reject $H_0$ if the evidence is against it; otherwise, do not reject $H_0$.
+    \end{enumerate}
+    
+    \subsubsection*{Types of Tests}
+    
+    Depending on the nature of the data and the hypothesis, different tests are used, including:
+    \begin{itemize}
+        \item \textbf{Z-test}: Used when the population variance is known and the sample size is large.
+        \item \textbf{T-test}: Employed when the population variance is unknown and the sample size is small.
+        \item \textbf{Chi-squared test}: Used for categorical data to assess how likely it is that an observed distribution is due to chance.
+        \item \textbf{ANOVA}: Used to compare the means of three or more samples.
     \end{itemize}    
 \end{examnotes}
